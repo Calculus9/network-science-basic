@@ -33,7 +33,6 @@ int* dij(int n, int** e, int node);
 * 网络模型
 */
 
-
 //环状最近邻耦合网络
 std::vector<std::vector<int>> generateRingNearestNeighborCoupledNet(int n, int k);
 // 小世界网络
