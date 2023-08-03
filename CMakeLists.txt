@@ -9,4 +9,6 @@ add_executable(cpp
         topologyProperties.h
         utils.cpp
         utils.h
+        graph.h
+        graph.cpp
 )

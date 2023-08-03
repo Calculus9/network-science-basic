@@ -1,5 +1,5 @@
 cmake-build-debug/
 ./.idea/
 .clang-format
-#function.cpp
-#function.h
+function.cpp
+function.h
