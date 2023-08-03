@@ -23,3 +23,8 @@
 #include "map"
 #include "unordered_map"
 #include "unordered_set"
+
+
+int** convertVectorToAdj(int n, std::vector<std::vector<int>> edge);
+
+std::vector<std::vector<int>> convertAdjToVec(int n, int** graph,bool directed);

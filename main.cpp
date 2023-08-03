@@ -1,5 +1,4 @@
-#include "function.h"
-
+#include "topologyProperties.h"
 
 int main(){
     int n = 10;
