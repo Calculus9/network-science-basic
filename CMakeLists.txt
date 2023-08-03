@@ -4,10 +4,9 @@ project(cpp)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(cpp
-#        topology_properties.cpp
-#        dij.cpp
-#        smallWorld.cpp
-        function.h
         main.cpp
-        function.cpp
+        topology_properties.cpp
+        topologyProperties.h
+        utils.cpp
+        utils.h
 )
