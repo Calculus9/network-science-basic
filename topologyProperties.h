@@ -4,7 +4,6 @@
  * @author         : Jingyu.Huang
  * @brief          : 拓扑性质
  * @attention      : None
- * @date           : 2023/8/3
  ******************************************************************************
  */
 #include "iostream"
@@ -22,9 +21,11 @@
 
 #endif // CPP_TOPOLOGYPROPERTIES_H
 
+// 计算度值
+int* calDegree(int** graph, int n);
 // 平均路径长度
 double calCharacteristicPathLength(int n, int** graph);
-
+double calPathLength(int n, std::vector<std::vector<int>> edge);
 //集聚系数
-double averageClusterCoefficient(int n, int **graph);
+double averageClusterCoefficient(int n, std::vector<std::vector<int>> v);
 double clusterCoefficient(int n, std::vector<std::vector<int>> v, int node);

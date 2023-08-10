@@ -4,19 +4,32 @@
  * @author         : Jingyu.Huang
  * @brief          : 用于计算网络的拓扑性质。
  * @attention      : None
- * @date           : 2023/8/3
  ******************************************************************************
  */
 #include "utils.h"
 #include "iostream"
 #include "algorithm"
 #include "vector"
-#include "random"
 #include "cstring"
 #include "queue"
-#include "map"
-#include "unordered_map"
-#include "unordered_set"
+/**
+ * 计算度值
+ * @param graph 邻接矩阵
+ * @param n 节点数目
+ * @return 度值数组
+ */
+int* calDegree(int** graph, int n){
+  int* degree = new int[n + 5];
+  for (int i = 0; i < n; ++i)
+  {
+    degree[i] = 0;
+    for (int j = 0; j < n; ++j)
+    {
+      degree[i] += graph[i][j] == 1;
+    }
+  }
+  return degree;
+}
 
 /**
  * ===========================================================================
@@ -54,15 +67,12 @@ double clusterCoefficient(std::vector<std::vector<int>> v, int node)
  * @param graph 邻接矩阵
  * @return 平均集聚系数
  */
-double averageClusterCoefficient(int n, int **graph){
+double averageClusterCoefficient(int n, std::vector<std::vector<int>> v){
     //初始化
     double res = 0.0;
-    std::vector<std::vector<int>> v = convertAdjToVec(n, graph, false);
-    std::vector<std::vector<int>>::iterator iter;
     for (int i = 0; i < n; ++i)
     {
         double c_i = clusterCoefficient(v, i);
-        std::cout << c_i << std::endl;
         res += 1.0 * c_i;
     }
     return res * 1.0 / n;
@@ -73,9 +83,23 @@ double averageClusterCoefficient(int n, int **graph){
  * 平均路径长度
  * ===========================================================================
  */
+
+double calPathLength(int n, std::vector<std::vector<int>> edge){
+//    std::cout << "111" << std::endl;
+    std::queue<int> q{};
+    std::map<int,int>mp{};
+    int result = 0;
+    for (int i = 0; i < n; ++i) {
+        std::map<int,int> dis = BFS(i, edge);
+        for (int j = i + 1; j < n; ++j) {
+          result += dis[j];
+        }
+    }
+    return result * 2.0 / (n * (n - 1));
+}
 //TODO:写法太复杂，待优化
 double calCharacteristicPathLength(int n, int** graph){
-    int path[n+5][n + 5];
+    int path[n + 5][n + 5];
     std::queue<int> q;
     bool vis[n + 5];
     memset(path, 99 , sizeof path);

@@ -5,10 +5,15 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(cpp
         main.cpp
-        topology_properties.cpp
         topologyProperties.h
         utils.cpp
         utils.h
         graph.h
         graph.cpp
+        topologyProperties.cpp
+#        centrality.cpp
+#        centrality.h
+        network_model.cpp
+        network_model.h
+        centrality.cpp
 )

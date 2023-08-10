@@ -1,12 +1,4 @@
-/**
- ******************************************************************************
- * @file           : graph.cpp
- * @author         : Jingyu.Huang
- * @brief          : 建图
- * @attention      : None
- * @date           : 2023/8/3
- ******************************************************************************
- */
+
 #include "iostream"
 #include "algorithm"
 #include "random"
