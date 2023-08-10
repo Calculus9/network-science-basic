@@ -1,6 +1,3 @@
-//
-// Created by 14412 on 2023/7/30.
-//
 #include <algorithm>
 #include <cstring>
 #include <fstream>
@@ -19,7 +16,7 @@ double calCharacteristicPathLength(int n, int graph[N+4][N+4]){
     bool vis[N];
     int step = 1;
     memset(path, 99, sizeof path);
-    // ¶ÔÃ¿¸ö½Úµã±éÀúÕÒµ½Æä¶ÔÓ¦µÄ×îÐ¡Öµ
+    // ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½Ð¡Öµ
     for (int i = 0; i < n; ++i) {
         q.push(i);
         memset(vis, false, sizeof vis);
@@ -39,7 +36,7 @@ double calCharacteristicPathLength(int n, int graph[N+4][N+4]){
                     }
                     if(graph[node][j]){
                         path[node][j] = path[j][node] = 1;
-                        // È¡×îÐ¡Öµ£¬ºóÃæÔÙ´ÎÕÒµ½Ê±»áÐÞ¸ÄÕâ¸öµØ·½
+                        // È¡ï¿½ï¿½Ð¡Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù´ï¿½ï¿½Òµï¿½Ê±ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½Ø·ï¿½
                         path[i][j] = path[j][i] = std::min(step, path[j][i]);
                         if(!vis[j]) {
                             vis[j] = true;
@@ -62,7 +59,7 @@ double calCharacteristicPathLength(int n, int graph[N+4][N+4]){
     return 1.0 * res / (n * (n-1));
 }
 double cluster_coefficient(int n, int graph[N+4][N+4]){
-    //³õÊ¼»¯
+    //ï¿½ï¿½Ê¼ï¿½ï¿½
     double res = 0.0, ans = 0.0;
     std::vector<std::vector<int>> v(N);
     std::vector<std::vector<int>>::iterator iter;
@@ -93,7 +90,7 @@ double cluster_coefficient(int n, int graph[N+4][N+4]){
     return ans / n;
 }
 void write(int n, int graph[N + 4][N + 4], const std::string& path){
-    // ÏòcsvÎÄµµÖÐÐ´ÈëÊý¾Ý
+    // ï¿½ï¿½csvï¿½Äµï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     std::ofstream dataFile;
     dataFile.open(path, std::ios::out | std::ios::trunc);
     dataFile << ",";
@@ -107,12 +104,12 @@ void write(int n, int graph[N + 4][N + 4], const std::string& path){
         dataFile << i << ",";
         for (int j = 0; j < n; j = j + 1)
         {
-            dataFile << graph[i][j] << ",";          // Ð´ÈëÊý¾Ý
+            dataFile << graph[i][j] << ",";          // Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         }
-        dataFile <<  std::endl;                       // »»ÐÐ
+        dataFile <<  std::endl;                       // ï¿½ï¿½ï¿½ï¿½
     }
 
-    dataFile.close();       // ¹Ø±ÕÎÄµµ
+    dataFile.close();       // ï¿½Ø±ï¿½ï¿½Äµï¿½
 }
 void convertVectorToAdj(int n){
     for (int i = 0; i < n; ++i)
@@ -132,7 +129,7 @@ void convertVectorToAdj(int n){
 }
 void generateNetwork(int n, int k, double p)
 {
-    // ¹¹½¨¹æÔòÍ¼
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼
     for (int i = 0; i < n; ++i)
     {
         for (int j = i + 1; j <= (i + k / 2); ++j)
@@ -145,24 +142,24 @@ void generateNetwork(int n, int k, double p)
     convertVectorToAdj(n);
     write(n, e, "bef.csv");
 
-    // Ëæ»ú»¯ÖØÁ¬
-    std::random_device rd;// »ñÈ¡Ëæ»úÉè±¸µÄÖÖ×Ó
-    std::mt19937 gen(rd()); // Ê¹ÓÃËæ»úÖÖ×Ó³õÊ¼»¯Ëæ»úÊýÒýÇæ
-    std::uniform_real_distribution<double> disProbability{0.1, 1.0};// Ëæ»úÉú²ú0~1Ö®¼äµÄÊý
-    std::uniform_int_distribution<int> disInteger(0, n - 1);// Ëæ»úÉú³ÉÒ»¸öÕûÊý
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    std::random_device rd;// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½è±¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    std::mt19937 gen(rd()); // Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    std::uniform_real_distribution<double> disProbability{0.1, 1.0};// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0~1Ö®ï¿½ï¿½ï¿½ï¿½ï¿½
+    std::uniform_int_distribution<int> disInteger(0, n - 1);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     for (int i = 0; i < n; ++i)
     {
         for (auto j: edge[i])
         {
             if (disProbability(gen) < p){
-                //Ëæ»úÖØÁ¬
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 int newNeighbor = disInteger(gen);
-                // ²»ÄÜÓÐÖØ±ßºÍ×Ô»·
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø±ßºï¿½ï¿½Ô»ï¿½
                 if (std::find(edge[i].begin(), edge[i].end(), newNeighbor) == edge[i].end() && i != newNeighbor){
                     /**
-                     * ¸üÐÂ²Ù×÷£º½«Ô­ÓÐµÄi£¬j»»Îªi neighbor
+                     * ï¿½ï¿½ï¿½Â²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½Ðµï¿½iï¿½ï¿½jï¿½ï¿½Îªi neighbor
                      */
-                     // j -> i È¡Ïû
+                     // j -> i È¡ï¿½ï¿½
                      edge[j].erase(std::find(edge[j].begin(), edge[j].end(), i));
                      edge[i].erase(std::find(edge[i].begin(), edge[i].end(), j));
                      // newNeighbor - i
@@ -183,7 +180,7 @@ int main()
 //    generateNetwork(n, k, p);
 //    write(n, e, "test.csv");
 //    double L = calCharacteristicPathLength(n, e);
-//    std::cout << "Æ½¾ùÂ·¾¶³¤¶ÈÎª" << L << std::endl;
+//    std::cout << "Æ½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª" << L << std::endl;
 //    double c = cluster_coefficient(n, e);
-//    std::cout << "¼¯¾ÛÏµÊýÎª" << c << std::endl;
+//    std::cout << "ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½Îª" << c << std::endl;
 }
